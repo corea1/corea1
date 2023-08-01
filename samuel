@@ -1,0 +1,356 @@
+<?php
+/**
+ * Plugin Name: Cities Levels for Woocommerce
+ * Plugin URL: https://ubongobot.com
+ * Author: Ubong Obot
+ * Author URL: https://ubongobot.com
+ * Description: This plugin adds cities for shipping zones in WooCommerce
+ * Version: 0.1.0
+ * License: GPL2
+ * License URL: https://www.gnu.org/licenses/gpl-2.0.txt
+ * Text-domain: clw
+ */
+
+// Add Basic Plugin Security
+defined('ABSPATH') or die;
+
+add_filter('woocommerce_states', 'kingz_clw');
+
+function kingz_clw($states) {
+    $map = array();
+
+    $cities = array(
+        'NG101' => array(
+            'city'     => 'Lagos Mainland',
+            'zones' => array(
+                'Zone 1' => array(
+                    'OYINGBO IJORОТТО',
+                    'IDDO',
+                    'YABA, BARIGA JIBOWU',
+                    'EBUTE META',
+                    'COSTAIN',
+                    'ONIKE',
+                    'OJUELEGBA',
+                    'MUSHIN',
+                    'IWAYA',
+                    'FADEYI',
+                    'UNILAG',
+                    'ONIPANU',
+                    'ABULE OJA',
+                    'PALMGROOVE',
+                    'ABULE IJESHA',
+                    'OBANIKORO',
+                    'OJOTA',
+                    'OGUDU',
+                    'OLUSOSUN',
+                    'KETU',
+                    'KOSOFE',
+                    'MILE 12',
+                    'MAGODO PHASE 2',
+                    'OREGUN',
+                    'ALAUSA',
+                    'ALAPERE',
+                    'OLUYOLE',
+                    'СОКЕ',
+                    'RADIO LAGOS',
+                    'AGIDINGBIN',
+                    'CITY MALL (IKEJA)',
+                    'ALAUSA SECRETARIAT',
+                    'OLD TOLL GATE',
+                    '7UP',
+                    'OTEDOLA',
+                    'FELA SHRINE',
+                    'CARDBURY',
+                    'ACME ROAD',
+                    'WEMPCO ROAD',
+                    'OGBA',
+                    'OMOLE PHASE 1',
+                    'AGUDA OGBA',
+                    'ROAD 2',
+                    'SHOGUNLE',
+                    'PWD',
+                    'IKEJA ALONG',
+                    'KETU IKOSI',
+                    'OJODU BEGER',
+                    'MORGAN ESTATE',
+                    'RIVER VALLEY ESTATE',
+                    'COLLEGE ROAD',
+                    'PENCINEMA AGEGE',
+                    'IJU ROAD',
+                    'DOPEMU',
+                    'AKOWONJO',
+                    'IYANA IPAJA',
+                    'ALIMOSHO',
+                    'GOWON ESTATE',
+                    'EGBEDA BUS STOP',
+                    'CMENT',
+                    'IKEJA',
+                    'GUINESS BUS STOP',
+                    'STADIUM AGEGE',
+                ),
+                'Zone 2' => array(
+                    'AGBOJU',
+                    'ALAKIJA',
+                    'ABULEADO',
+                    'SATELLITE TOWN',
+                    'BARRACKS',
+                    'VOLKZ',
+                    'TRADEFAIR',
+                    'ABULE OSHUN',
+                    'ALABA INT\'L',
+                    'IYANA IBA',
+                    'оКоКо',
+                    'LASU',
+                    'IGANDO',
+                    'IKOTUN',
+                    'EJIGBO',
+                    'OKE-AFA',
+                    'JAKANDE ESTATE',
+                    'NNPC',
+                    'IDIMU',
+                    'COUNCIL BUS STOP',
+                    'CELE-EGBE',
+                    'ILE-IWE',
+                    'EGAN',
+                    'ABARANJE',
+                    'SHA-SHA',
+                    'IPAJA',
+                    'FAGAB',
+                    'IJUSHAGA',
+                    'K.FARM',
+                    'MAGODO PHASE 1',
+                    'UNILAG ESTATE',
+                    'BUCKNOR ESTATE',
+                    'ABESAN',
+                    'ABORU',
+                    'jALAKA',
+                    'IPONRI',
+                    'NBC',
+                    'ORILE IGANMU',
+                    'ORILE',
+                    'SURU-ALABA',
+                    'ALAAFIA',
+                    'MILE 2',
+                    'AJEGUNLE',
+                    'OLD OJO ROAD',
+                    'FESTAC',
+                    'AMUWO ODOFIN',
+                    'AGO PALACE',
+                    'CELE IJESHA',
+                    'ISOLO',
+                    'ILASAMAJA',
+                    'MAZA-MAZA',
+                    'АРАРА',
+                    'APAPA OLODI',
+                    'APAPA WHARF',
+                    'COCONUT',
+                    'AMUKOKO',
+                    'SARI-IGANMU',
+                    'SURULERE',
+                    'ISHAGA ROAD',
+                    'OSHODI',
+                    '7&8',
+                    'AIRPORT ROAD',
+                    'MAFOLUKU',
+                    'NACHO',
+                    'LOCAL AIRPORT',
+                    'INT\'L AIRPORT',
+                    'LASUTH',
+                    'IKEJA GRA',
+                    'LADIPO'
+                ),
+                'Zone 3' => array(
+                    'LASPOTECH',
+                    'WEIGH-BRIDGE',
+                    'OGOLONTO',
+                    'IGBOGBO',
+                    'ОКО-ОВА',
+                    'ORILE AGEGE'
+                ),
+                'Zone 4' => array(
+                    'ОКОКОМАІКО',
+                    'AGBARA',
+                    'AJUWON',
+                    'AKUTE',
+                    'AKINBO',
+                    'ALAGBOLE',
+                    'OJODU ABIODUN',
+                    'OPIC',
+                    'KARA',
+                    'MAGBORO',
+                    'AREPO',
+                    'IBAFO',
+                    'MOWE',
+                    'REDEMPTION CAMP',
+                    'SANGO OTTA',
+                    'OJU-ORE',
+                    'BELLS UNIVERSITY',
+                    'COVENANT UNIVERSITY',
+                    'ATAN-OTA',
+                    'KETU-IJANIKIN',
+                    'AJAGBANDI',
+                    'IGBO-ELERIN'
+                ),
+                'Zone 5' => array(
+                    'BADAGRY',
+                    'IDIIROKO'
+                )
+            )
+            
+        ),
+        'NG102' => array(
+            'city'     => 'Lagos Island',
+            'zones' => array(
+                'Zone 1' => array(
+                    'LAGOS ISLAND',
+                    'ST. NICOLAS CITY HALL IGBOSERE',
+                    'GENERAL HOSPITAL ODAN',
+                    'T.B.S',
+                    'ONIKAN (ARENA)',
+                    'OBALENDE',
+                    'ADENIJI',
+                    'BONNY CAMP',
+                    'EKO HOTEL',
+                    'ADEOLA ODEKU',
+                    'ONIRU',
+                    'LAND - MARK EVENT',
+                    'VICTORIA ISLAND',
+                    '1004',
+                    'LAW SCHOOL',
+                    'EKO ATLANTIC',
+                    'SAND FIELD',
+                    'ONIRU PALACE'
+                ),
+                'Zone 2' => array(
+                    'LEKKI PHASE 1',
+                    'MARWA LEKKI',
+                    'IKATE',
+                    'ELEGUSHI',
+                    'NEW ROAD',
+                    'CHISCO',
+                    'ELF',
+                    'SALEM',
+                    'OLOGOLO',
+                    'AJIRA',
+                    'JAKANDE',
+                    'AGUNGI',
+                    'OSAPA LODON',
+                    'CHEVY VIEW',
+                    'CHEVRON'
+                ),
+                'Zone 3' => array(
+                    'ORCHID',
+                    'ELEGANZA',
+                    '2~ TOLL GATE',
+                    'IKOTA VILLA',
+                    'LEKKI COUNTRY HOME',
+                    'MEGA CHICKEN',
+                    'V.G.C',
+                    'ILAJE',
+                    'IKOTA SHOPPING COMPLEX',
+                    'JUBILLE BRIDGE',
+                    'ADDO ROAD',
+                    'BADORE',
+                    'OGOMBO',
+                    'THOMAS ESTATE',
+                    'ABRAHAM ADESANYA',
+                    'L.B.S',
+                    'SANGOTEDO',
+                    'ABIGO'
+                ),
+                'Zone 4' => array(
+                    '10:50',
+                    'SYAYA',
+                    'LAKWE',
+                    'ELEKO',
+                    'CONTAINER',
+                    'IBEJU LEKKI',
+                    'PAN ATLANTIC',
+                    'ELEMORO'
+                ),
+                'Zone 5' => array(
+                    'EPE',
+                    'DANGOTE REFINERY'
+                )
+            )
+        ),
+        'NG103' => array(
+            'city'     => 'Outside Lagos',
+            'zones' => array(
+                'NORTH - WEST ZONE' => array(
+                    'JIGAWA',
+                    'KADUNA',
+                    'KANO',
+                    'KASTINA',
+                    'KEBBI',
+                    'SOKOTO',
+                    'ZAMFARA'
+                ),
+                'SOUTH - EAST ZONE' => array(
+                    'ABIA',
+                    'ANAMBRA',
+                    'EBONYI',
+                    'ENUGU',
+                    'IMO',
+                    'OWERRI'
+                ),
+                'SOUTH - SOUTH ZONE' => array(
+                    'AKWA IBOM',
+                    'BAYELSA',
+                    'CROSS RIVER',
+                    'RIVERS PHC',
+                    'DELTA',
+                    'WARRI, ASABA',
+                    'OTHER L.G ( ABRAKA, UGHELLI, KWALE, OGHARA, AGBOR ETC)',
+                    'EDO EKPOMA',
+                    'AUCHI',
+                    'UROMI'
+                ),
+                'NORTH CENTRAL AND MIDDLE ZONE' => array(
+                    'BELT',
+                    'BENUE',
+                    'KOGI',
+                    'KWARA',
+                    'NASSARAWA',
+                    'NIGER',
+                    'PLATEAU',
+                    'FEDERAL CAPITAL TERRITORY'
+                ),
+                'SOUTH WEST ZONE' => array(
+                    'EKITI',
+                    'OGUN',
+                    'ABEOKUTA, IJEBU ODE SAGAMU, IJEBU IGBO, AGO IWOYE ETC',
+                    'ONDO',
+                    'OSUN',
+                    'OYO TOWN',
+                    'OSOGBO',
+                    'ILORIN'
+                ),
+                'NORTH - EAST ZONE' => array(
+                    'ADAMAWA',
+                    'BAUCHI',
+                    'BORNO',
+                    'GOMBE',
+                    'TARABA',
+                    'YOBE'
+                ),
+            )
+        ),
+    );
+
+    foreach ($cities as $city => $cityValue) {
+        $map[$city] = $cityValue['city'];
+
+        if (is_array($cityValue['zones'])) {
+            foreach ($cityValue['zones'] as $zone => $subZones) {
+                foreach ($subZones as $subZone) {
+                    $map[$city . '_' . sanitize_title($zone) . '_' . sanitize_title($subZone)] = $subZone . ', ' . $zone . ', ' . $cityValue['city'];
+                }
+            }
+        }
+    }
+
+    $states['NG'] = $map;
+
+    return $states;
+}
